@@ -15,6 +15,12 @@ A Vagrant provisioned VM to run Docker containers in.
 
 ```
 $ git clone git@github.com:joshwines/OSXContainerHost.git
+$ cp Vagranfile.example Vagrantfile
+```
+
+Make any changes as required to your Vagrantfile. At a minimuim you'll need to double check the `node.vm.synced_folder` line to make sure you are mounting the correct location.
+
+```
 $ vagrant up
 $ vagrant ssh
 ```
