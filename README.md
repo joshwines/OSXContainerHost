@@ -6,20 +6,26 @@ A Vagrant provisioned VM to run Docker containers in.
 ## Prerequisites
 
 * Vagrant
+* Vagrant BindFS
+	* `$ vagrant plugin install vagrant-bindfs`
 * VirtualBox
 * Ansible
-* Vagrant BindFS
-- $ vagrant plugin install vagrant-bindfs
 
 ## Usage
 
 ```
-$ git clone git@github.com:SeerUK/OSXContainerHost.git
+$ git clone git@github.com:joshwines/OSXContainerHost.git
 $ vagrant up
-$ export DOCKER_HOST=tcp://192.168.200.2:2375
+$ vagrant ssh
 ```
 
-(Or alternatively, add: `export DOCKER_HOST=tcp://192.168.200.2:2375` to whatever shell rc is relevent to your system)
+Run your docker/fig commands.
+
+#### NFS Share
+By default your entire /Users directory is shared via NFS to /Users on the guest. Note: the host NFS config only allows the guest to mount this share. Feel free to change this as you require in the `Vagrantfile`. Once ssh'd into the VM you can run your fig commands from within. For ease I set up a symlink to my workspace folder in the home directory. Do with it as you please.
+```
+$ ln -s /Users/{username}/workspace ~/workspace
+```
 
 ## Things to be wary of
 

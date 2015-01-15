@@ -10,13 +10,14 @@
 
 VAGRANTFILE_API_VERSION = "2"
 
-# Change these to suite your needs / machine
-CPUS   = 4
+# Change these to suite your needs / machine.
+# Note: I was getting dismal performance with more than 1 CPU set (I'm talking pages were 5x slower), so just keep that in mind if you do try and experiment with changing this.
+CPUS   = 1
 MEMORY = 4096
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "container-host" do |node|
-    node.vm.box = "ubuntu/trusty64"
+    node.vm.box = "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box"
     node.vm.hostname = "container-host"
 
     node.vm.provider "virtualbox" do |v|
