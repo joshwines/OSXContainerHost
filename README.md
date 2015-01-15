@@ -8,6 +8,8 @@ A Vagrant provisioned VM to run Docker containers in.
 * Vagrant
 * VirtualBox
 * Ansible
+* Vagrant BindFS
+- $ vagrant plugin install vagrant-bindfs
 
 ## Usage
 
