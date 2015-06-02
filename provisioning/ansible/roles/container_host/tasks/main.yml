@@ -1,6 +1,6 @@
 ---
 - name: Register Docker APT Key
-  apt_key: keyserver=keyserver.ubuntu.com id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+  apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=36A1D7869245C8950F966E92D8576A8BA88D21E9
 
 - name: Register Docker Repository
   apt_repository: repo='deb https://get.docker.com/ubuntu docker main' state=present update_cache=yes
@@ -11,5 +11,8 @@
 - name: Register Vagrant User in Docker Group
   command: usermod -a -G docker vagrant
 
-- name: Install fig
-  get_url: url=https://github.com/docker/fig/releases/download/1.0.1/fig-Linux-x86_64 dest=/usr/local/bin/fig mode=0777
+- name: Install Docker Compose
+  get_url: url=https://github.com/docker/compose/releases/download/1.2.0/docker-compose-Linux-x86_64 dest=/usr/local/bin/docker-compose mode=0777
+
+- name: Install Curl
+  apt: name=curl state=present

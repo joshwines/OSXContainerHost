@@ -32,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.nfs.map_uid = Process.uid
     node.nfs.map_gid = Process.gid
 
-    node.vm.synced_folder "~/workspace/rpl_spree", "/app.tmp", type: "nfs"
+    node.vm.synced_folder "~/workspace/path-to-source", "/app.tmp", type: "nfs"
     node.bindfs.bind_folder "/app.tmp", "/home/vagrant/app",
       create_as_user: true,
       perms: "u=u:g=g:o=o"
